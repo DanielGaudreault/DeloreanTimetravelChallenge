@@ -260,22 +260,22 @@ function updateGameArea() {
     
     // Increase difficulty as score increases
     var obstacleSpeed = -2 - Math.floor(myGameArea.frameNo / 1000);
-    var spawnRate = 100 - Math.floor(myGameArea.frameNo / 100);
+    var spawnRate = 150 - Math.floor(myGameArea.frameNo / 100); // Increased from 100 to 150 to space out obstacles
     
     if (myGameArea.frameNo == 1 || everyinterval(spawnRate > 50 ? spawnRate : 50)) {
         x = myGameArea.canvas.width;
         minHeight = 50;
         maxHeight = myGameArea.canvas.height/2;
         height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap = 100;
-        maxGap = 200;
+        minGap = 200; // Increased from 100 to 200
+        maxGap = 300; // Increased from 200 to 300
         gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
         
-        // Create time portal looking obstacles
+        // Create time portal looking obstacles (made them narrower - 20px instead of 30px)
         var topColor = getPortalColor();
         var bottomColor = getPortalColor();
-        var topObstacle = new component(30, height, topColor, x, 0);
-        var bottomObstacle = new component(30, myGameArea.canvas.height - height - gap, bottomColor, x, height + gap);
+        var topObstacle = new component(20, height, topColor, x, 0); // Width changed from 30 to 20
+        var bottomObstacle = new component(20, myGameArea.canvas.height - height - gap, bottomColor, x, height + gap); // Width changed from 30 to 20
         
         myObstacles.push(topObstacle);
         myObstacles.push(bottomObstacle);
